@@ -1,4 +1,5 @@
-export const EMAIL_API_ENDPOINT = "https://mailverse.onrender.com/api/v1/email";
+export const EMAIL_API_ENDPOINT =
+  "https://mailverse-1.onrender.com/api/v1/email";
 export const emptyInbox =
   "https://miro.medium.com/max/1088/1*DhOnyEHovQZ31rH00-VUDw.png";
 export const emptyProfilePic =

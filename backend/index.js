@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 const corsOptions = {
-  origin: "https://mailverse.onrender.com",
+  origin: "https://mailverse-1.onrender.com",
   credentials: true,
 };
 app.use(cors(corsOptions));
