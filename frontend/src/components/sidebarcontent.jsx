@@ -6,7 +6,7 @@ import ListItem from "@mui/material/ListItem";
 import CreateIcon from "@mui/icons-material/Create";
 import { SIDEBAR_DATA } from "../config/sidebar.config";
 import ComposeMail from "./ComposeMail";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, NavLink, useNavigate } from "react-router-dom";
 import { routes } from "../routes/routes";
 import { useSelector } from "react-redux";
 
@@ -45,6 +45,7 @@ const sidebarcontent = () => {
   const { type } = useParams();
   const [DialogOpen, setDialogOpen] = useState(false);
   const { user } = useSelector((store) => store.auth);
+  const navigate = useNavigate();
 
   const openDialogbox = () => {
     if (user) {
