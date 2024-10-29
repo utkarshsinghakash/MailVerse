@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken"; // to generate user token
 import isAuthenticated from "../middlewares/isAuthenticated.js";
 const router = express.Router();
 
-router.post("/register", async (req, res) => {
+router.post("/register", isAuthenticated, async (req, res) => {
   try {
     const { fullname, email, password } = req.body;
 
@@ -42,7 +42,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login", isAuthenticated, async (req, res) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
@@ -185,6 +185,8 @@ router.get("/email/:type", async (req, res) => {
       emails = await Email.find({ bin: false });
     } else if (type === "starred") {
       emails = await Email.find({ starred: true, bin: false });
+    } else if (type === "inbox") {
+      emails = await Email.find({ type: "inbox", bin: false });
     } else {
       emails = await Email.find({ type: type });
     }
