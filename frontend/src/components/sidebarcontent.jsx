@@ -8,6 +8,7 @@ import { SIDEBAR_DATA } from "../config/sidebar.config";
 import ComposeMail from "./ComposeMail";
 import { useParams, NavLink } from "react-router-dom";
 import { routes } from "../routes/routes";
+import { useSelector } from "react-redux";
 
 const Container = styled(Box)({
   padding: 8,
@@ -43,9 +44,14 @@ const ComposeButton = styled(Button)({
 const sidebarcontent = () => {
   const { type } = useParams();
   const [DialogOpen, setDialogOpen] = useState(false);
+  const { user } = useSelector((store) => store.auth);
 
   const openDialogbox = () => {
-    setDialogOpen(true);
+    if (user) {
+      setDialogOpen(true);
+    } else {
+      navigate(routes.login.path);
+    }
   };
 
   return (
